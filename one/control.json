@@ -1,0 +1,63 @@
+{
+    "uc1": [
+        {
+            "html": "<html><div id='uc1'></div>这里存放控件的html代码CSS放在模板页内<html>"
+        },
+        {
+            "ID": "uc1",
+            "ClassName": "RuiZhi.Malms.Work.ComReport.BLL.ucDropDownList",
+            "ControlBigType": "Template",
+            "ControlSmallType": "SelectZB",
+            "Title": "帐簿",
+            "Width": " ",
+            "Height": " ",
+            "IsDouble": " ",
+            "DoubleMode": " ",
+            "GroupName": " ",
+            "ProcPram": "zbdm",
+            "ControlMode": " ",
+            "MaxLength": " ",
+            "DefaultValue": " ",
+            "ValueRange": " ",
+            "CustomValue": " ",
+            "RelateControlID": " ",
+            "TextSql": " ",
+            "ValueSql": " ",
+            "ValueType": " ",
+            "Temp1": " ",
+            "Temp2": " ",
+            "Temp3": " ",
+            "Temp4": " ",
+            "Temp5": " ",
+            "CheckZb": " "
+        }
+    ],
+    "uc2": [
+        {
+            "html": "<html><div id='uc2'></div>这里存放控件的html代码CSS放在模板页内<html>"
+        },
+        {
+            "ID": "uc2",
+            "ClassName": "RuiZhi.Malms.Work.ComReport.BLL.ucAccountDate1",
+            "ControlBigType": "Template",
+            "ControlSmallType": "AcountDateRange1",
+            "Title": "会计期",
+            "ProcPram": "kjq",
+            "ControlMode": "1",
+            "MaxLength": " ",
+            "DefaultValue": " ",
+            "ValueRange": " ",
+            "CustomValue": " ",
+            "RelateControlID": " ",
+            "TextSql": " ",
+            "ValueSql": " ",
+            "ValueType": " ",
+            "Temp1": " ",
+            "Temp2": " ",
+            "Temp3": " ",
+            "Temp4": " ",
+            "Temp5": " ",
+            "CheckZb": " "
+        }
+    ]
+}

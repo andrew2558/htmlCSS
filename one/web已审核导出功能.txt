@@ -1,0 +1,295 @@
+已审核下的四个列表导出功能：
+    1、耗材自购单
+    2、委托申购单
+    3、自购报销单
+    4、固定资产盘点申请
+
+1.1耗材自购单
+
+	        dt.Columns.Add(new DataColumn("单据号", typeof(string)));  //djh		  a.djh as 单据号
+            dt.Columns.Add(new DataColumn("单据状态", typeof(string))); //djzd		 a.spyjmc as 单据状态
+            dt.Columns.Add(new DataColumn("总金额", typeof(string)));  //money		 d.model as 总金额
+            dt.Columns.Add(new DataColumn("申请日期", typeof(string))); //sqrq		 d.sqrq as 申请日期
+            dt.Columns.Add(new DataColumn("供货单位", typeof(string))); //ghdwmc	 d.ghdwmc as 供货单位
+            dt.Columns.Add(new DataColumn("经办人", typeof(string)));  //jbr		 d.jbr as 经办人
+            dt.Columns.Add(new DataColumn("物品归类", typeof(string))); //cjlx		 d.cjlx as 物品归类
+            dt.Columns.Add(new DataColumn("用户留言", typeof(string))); //sgly		 d.sgly as 用户留言
+
+            dt.Columns.Add(new DataColumn("物资名称", typeof(string))); //zcmc		 c.zcmc as 物资名称
+            dt.Columns.Add(new DataColumn("规格型号", typeof(string))); //ggxh		 c.ggxh as 规格型号
+            dt.Columns.Add(new DataColumn("单位", typeof(string)));       //unit	     c.unit as 单位
+            dt.Columns.Add(new DataColumn("品牌", typeof(string)));       //brand	     c.brand as 品牌
+            dt.Columns.Add(new DataColumn("单价", typeof(string)));       //price	    c.price as 单价
+            dt.Columns.Add(new DataColumn("请购数量", typeof(string)));     //qgsl  	c.qgsl as 请购数量
+            dt.Columns.Add(new DataColumn("出库数量", typeof(string)));     //cksl  	c.cksl as 出库数量
+            dt.Columns.Add(new DataColumn("金额", typeof(string)));       //money 	c.money as 金额
+            dt.Columns.Add(new DataColumn("电商网址", typeof(string)));     //wz	    c.wz as 电商网址
+            dt.Columns.Add(new DataColumn("备注", typeof(string)));        //memo	    c.momo as 备注
+
+
+a.djh as 单据号,  a.spyjmc as 单据状态,  d.money as 总金额, d.sqrq as 申请日期, d.ghdwmc as 供货单位, 
+d.jbr as 经办人,  d.cglx as 物品归类, d.sgly as 用户留言, c.zcmc as 物资名称, c.ggxh as 规格型号, 
+ c.unit as 单位, c.brand as 品牌, c.price as 单价, c.qgsl as 请购数量, c.cksl as 出库数量, c.money as 金额, 
+ c.wz as 电商网址, c.memo as 备注
+
+
+
+
+SELECT a.djh AS 单据号, a.spyjmc AS 单据状态, d.money AS 总金额, d.sqrq AS 申请日期, d.ghdwmc AS 供货单位
+	, d.jbr AS 经办人
+	, CASE d.cglx
+		WHEN '0' THEN '试剂'
+		WHEN '1' THEN '耗材'
+		WHEN '2' THEN '低值'
+	END AS 物品归类, d.sgly AS 用户留言, c.zcmc AS 物资名称, c.ggxh AS 规格型号, c.unit AS 单位
+	, c.brand AS 品牌, c.price AS 单价, c.qgsl AS 请购数量, c.cksl AS 出库数量, c.money AS 金额
+	, c.wz AS 电商网址, c.memo AS 备注
+FROM (
+	SELECT MAX(a.serial_no) AS serial_no, a.zdxh, a.splx, b.djmc
+		, a.djh, a.splx AS lrrq, a.sprq, a.spyjmc
+	FROM maw_request_audi_record a, mab_web_bill_type b
+	WHERE a.splx = b.djlx
+		AND b.syzt = '0'
+		AND a.syzt = '0'
+		AND a.jlzt = '2'
+		AND a.spczyxh = '1097'
+		AND a.sprq >= '2017-11-22'
+		AND a.sprq <= '2018-01-25 23：59：59'
+		AND a.splx = 84
+	GROUP BY a.zdxh, a.splx, b.djmc, a.djh, a.sprq, a.spyjmc
+) a
+	LEFT JOIN maw_self_stock_request_bill d ON a.zdxh = d.serial_no
+	LEFT JOIN maw_self_stock_request_detail c ON a.zdxh = c.zdxh
+WHERE d.syzt = '0'
+	AND c.syzt = '0'
+ORDER BY a.djh DESC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1.2委托申购单
+
+
+            dt.Columns.Add(new DataColumn("单据号", typeof(string)));  //djh               d.djh as 单据号
+            dt.Columns.Add(new DataColumn("单据状态", typeof(string))); //djzt              a.djzt as 单据状态
+            dt.Columns.Add(new DataColumn("总额", typeof(string))); //money                   d.money as 总额
+            dt.Columns.Add(new DataColumn("申请日期", typeof(string))); //sqrq              d.sqrq as 申请日期
+            dt.Columns.Add(new DataColumn("收货人地址", typeof(string))); //shrdz                d.shrdz as 收货人地址
+            dt.Columns.Add(new DataColumn("收货人", typeof(string))); //shrxm              d.shrxm as 收货人
+            dt.Columns.Add(new DataColumn("收货人电话", typeof(string))); //shrdh                d.shrdh as 收货人电话
+            dt.Columns.Add(new DataColumn("供应商", typeof(string))); //gysmc                  d.gymc as 供应商
+            dt.Columns.Add(new DataColumn("申请理由", typeof(string))); //sqly                  d.sqly as 申请理由
+            dt.Columns.Add(new DataColumn("采购类型", typeof(string))); //cglx                  d.cglx as 采购类型
+            dt.Columns.Add(new DataColumn("备注", typeof(string))); //memo                    d.memo as 备注
+
+            dt.Columns.Add(new DataColumn("委托物资名称", typeof(string))); //zcmc_old            c.zcmc_old as  委托物资名称
+            dt.Columns.Add(new DataColumn("委托规格型号", typeof(string))); //ggxh_old             c.ggxh_old as 委托规格型号
+            dt.Columns.Add(new DataColumn("物资名称", typeof(string))); //zcmc                   c.zcmc as 物资名称
+            dt.Columns.Add(new DataColumn("规格型号", typeof(string))); //ggxh                  c.ggxh as 规格型号
+            dt.Columns.Add(new DataColumn("品牌", typeof(string)));       //pp                    c.pp as 品牌
+            dt.Columns.Add(new DataColumn("物资单位", typeof(string)));       //unit                c.unit as 物资单位
+            dt.Columns.Add(new DataColumn("单价", typeof(string)));       //price                 c.price as 单价
+            dt.Columns.Add(new DataColumn("数量", typeof(string)));     //cgsl/cksl/rksl?         c.qgsl as 数量
+            dt.Columns.Add(new DataColumn("货号", typeof(string)));     //hh                      c.hh as 货号
+            dt.Columns.Add(new DataColumn("联系人", typeof(string)));     //lxrxm               c.lxrxm as 联系人
+            dt.Columns.Add(new DataColumn("联系电话", typeof(string)));     //lxrdh              c.lxrdh as 联系电话
+            dt.Columns.Add(new DataColumn("网址", typeof(string)));       //wz                    c.wz as 网址
+            dt.Columns.Add(new DataColumn("状态", typeof(string)));     //dhzt/syzt?              c.syzt as 状态
+            dt.Columns.Add(new DataColumn("拒绝理由", typeof(string)));     //jjly              c.jjly as 拒绝理由
+            dt.Columns.Add(new DataColumn("到货日期", typeof(string)));     //dhrq              c.dhrq as 到货日期
+            dt.Columns.Add(new DataColumn("备注2", typeof(string)));        //memo                c.memo as 备注2
+
+
+a.djh as 单据号, a.spyjmc as 单据状态, d.money as 总额, d.sqrq as 申请日期, d.shrdz as 收货人地址, 
+d.shrxm as 收货人, d.shrdh as 收货人电话, d.gysmc as 供应商, d.sqly as 申请理由, d.cglx as 采购类型, 
+d.memo as 备注, c.zcmc_old as  委托物资名称, c.ggxh_old as 委托规格型号, c.zcmc as 物资名称, 
+c.ggxh as 规格型号, c.pp as 品牌 , c.unit as 物资单位, c.price as 单价, c.qgsl as 数量, 
+c.hh as 货号, c.lxrxm as 联系人, c.lxrdh as 联系电话, c.wz as 网址, c.syzt as 状态, c.jjly as 拒绝理由, 
+c.dhrq as 到货日期, c.memo as 备注2
+
+
+
+SELECT a.djh AS 单据号, a.spyjmc AS 单据状态, d.money AS 总额, d.sqrq AS 申请日期, d.shrdz AS 收货人地址
+	, d.shrxm AS 收货人, d.shrdh AS 收货人电话, d.gysmc AS 供应商, d.sqly AS 申请理由
+	, CASE d.cglx
+		WHEN '0' THEN '试剂'
+		WHEN '1' THEN '耗材'
+		WHEN '2' THEN '低值'
+	END AS 物品归类, d.memo AS 备注, c.zcmc_old AS 委托物资名称, c.ggxh_old AS 委托规格型号, c.zcmc AS 物资名称
+	, c.ggxh AS 规格型号, c.pp AS 品牌, c.unit AS 物资单位, c.price AS 单价, c.qgsl AS 数量
+	, c.hh AS 货号, c.lxrxm AS 联系人, c.lxrdh AS 联系电话, c.wz AS 网址, c.syzt AS 状态
+	, c.jjly AS 拒绝理由, c.dhrq AS 到货日期, c.memo AS 备注2
+FROM (
+	SELECT MAX(a.serial_no) AS serial_no, a.zdxh, a.splx, b.djmc
+		, a.djh, a.splx AS lrrq, a.sprq, a.spyjmc
+	FROM maw_request_audi_record a, mab_web_bill_type b
+	WHERE a.splx = b.djlx
+		AND b.syzt = '0'
+		AND a.syzt = '0'
+		AND a.jlzt = '2'
+		AND a.spczyxh = '1097'
+		AND a.sprq >= '2017-11-22'
+		AND a.sprq <= '2018-01-25 23：59：59'
+		AND a.splx = 85
+	GROUP BY a.zdxh, a.splx, b.djmc, a.djh, a.sprq, a.spyjmc
+) a
+	LEFT JOIN maw_dept_entrust_bill d ON a.zdxh = d.serial_no
+	LEFT JOIN maw_dept_entrust_detail c ON a.zdxh = c.zdxh
+WHERE d.syzt = '0'
+	AND c.syzt = '0'
+ORDER BY a.djh DESC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1.3自购报销单
+
+
+            dt.Columns.Add(new DataColumn("单据号", typeof(string)));  //djh       a.djh as 单据号
+            dt.Columns.Add(new DataColumn("单据状态", typeof(string))); //djzt      a.spyjmc as 单据状态
+            dt.Columns.Add(new DataColumn("总额", typeof(string))); //money       d.money as 总额
+            dt.Columns.Add(new DataColumn("供货单位", typeof(string))); //ghdwmc    d.ghdwmc as 供货单位
+            dt.Columns.Add(new DataColumn("物品归类", typeof(string))); //cglx      d.cglx as 物品归类
+            dt.Columns.Add(new DataColumn("备注", typeof(string))); //memo         d.memo as 备注
+
+            dt.Columns.Add(new DataColumn("申购名称", typeof(string))); //zcmc       c.zcmc as 申购名称
+            dt.Columns.Add(new DataColumn("申购规格型号", typeof(string))); //ggxh    c.ggxh as 申购规格型号
+            dt.Columns.Add(new DataColumn("发票名称", typeof(string))); //zgzcmc        c.zgzcmc as 发票名称
+            dt.Columns.Add(new DataColumn("发票规格型号", typeof(string))); //zgggxh    c.zgggxh as 发票规格型号
+            dt.Columns.Add(new DataColumn("物资单位", typeof(string)));       //unit    c.unit as 物资单位
+            dt.Columns.Add(new DataColumn("品牌", typeof(string)));       //brand     c.brand as 品牌
+            dt.Columns.Add(new DataColumn("请购数量", typeof(string)));     //amount    c.amount as 请购数量
+            dt.Columns.Add(new DataColumn("单价", typeof(string)));     //price            c.price as 单价
+            dt.Columns.Add(new DataColumn("金额2", typeof(string)));     //money       c.money as 金额2
+            dt.Columns.Add(new DataColumn("发票号", typeof(string)));     //fph         c.fph as 发票号
+            dt.Columns.Add(new DataColumn("发票日期", typeof(string)));       //fprq    c.fprq as 发票日期
+            dt.Columns.Add(new DataColumn("经费代码", typeof(string)));     //jfdm      c.jfdm as 经费代码
+            dt.Columns.Add(new DataColumn("申购理由", typeof(string)));     //memo      c.memo as 申购理由
+
+
+a.djh as 单据号, a.spyjmc as 单据状态, d.money as 总额, d.ghdwmc as 供货单位, d.cglx as 物品归类, 
+d.memo as 备注, c.zcmc as 申购名称, c.ggxh as 申购规格型号, c.zgzcmc as 发票名称, c.zgggxh as 发票规格型号, 
+c.unit as 物资单位, c.brand as 品牌, c.amount as 请购数量, c.price as 单价, c.money as 金额2, c.fph as 发票号, 
+c.fprq as 发票日期, c.jfdm as 经费代码, c.memo as 申购理由
+
+
+
+SELECT a.djh AS 单据号, a.spyjmc AS 单据状态, d.money AS 总额, d.ghdwmc AS 供货单位
+	, CASE d.cglx
+		WHEN '0' THEN '试剂'
+		WHEN '1' THEN '耗材'
+		WHEN '2' THEN '低值'
+	END AS 物品归类, d.memo AS 备注, c.zcmc AS 申购名称, c.ggxh AS 申购规格型号, c.zgzcmc AS 发票名称
+	, c.zgggxh AS 发票规格型号, c.unit AS 物资单位, c.brand AS 品牌, c.amount AS 请购数量, c.price AS 单价
+	, c.money AS 金额2, c.fph AS 发票号, c.fprq AS 发票日期, c.jfdm AS 经费代码, c.memo AS 申购理由
+FROM (
+	SELECT MAX(a.serial_no) AS serial_no, a.zdxh, a.splx, b.djmc
+		, a.djh, a.splx AS lrrq, a.sprq, a.spyjmc
+	FROM maw_request_audi_record a, mab_web_bill_type b
+	WHERE a.splx = b.djlx
+		AND b.syzt = '0'
+		AND a.syzt = '0'
+		AND a.jlzt = '2'
+		AND a.spczyxh = '1097'
+		AND a.sprq >= '2017-11-22'
+		AND a.sprq <= '2018-01-25 23：59：59'
+		AND a.splx = 86
+	GROUP BY a.zdxh, a.splx, b.djmc, a.djh, a.sprq, a.spyjmc
+) a
+	LEFT JOIN maw_school_reimbursed_bill d ON a.zdxh = d.serial_no
+	LEFT JOIN maw_school_reimbursed_detail c ON a.zdxh = c.zdxh
+WHERE d.syzt = '0'
+	AND c.syzt = '0'
+ORDER BY a.djh DESC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1.4固定资产盘点申请
+
+
+
+
+
+
+
+GetAllAudiRecord(userinfo.UserNo, 4, this.cb_rq.Checked, this.txtStart.Value, this.txtEnd.Value, Convert.ToInt32(drp_splx.SelectedValue.ToString() == "" ? "-1" : drp_splx.SelectedValue.ToString()));
+
+
+
+
+
+
+
+
+string sql1=" SELECT a.djh AS 单据号, a.spyjmc AS 单据状态, d.money AS 总额, d.ghdwmc AS 供货单位
+	, CASE d.cglx
+		WHEN '0' THEN '试剂'
+		WHEN '1' THEN '耗材'
+		WHEN '2' THEN '低值'
+	END AS 物品归类, d.memo AS 备注, c.zcmc AS 申购名称, c.ggxh AS 申购规格型号, c.zgzcmc AS 发票名称
+	, c.zgggxh AS 发票规格型号, c.unit AS 物资单位, c.brand AS 品牌, c.amount AS 请购数量, c.price AS 单价
+	, c.money AS 金额2, c.fph AS 发票号, c.fprq AS 发票日期, c.jfdm AS 经费代码, c.memo AS 申购理由 ";
+
+
+string sql2=" FROM (
+	SELECT MAX(a.serial_no) AS serial_no, a.zdxh, a.splx, b.djmc
+		, a.djh, a.splx AS lrrq, a.sprq, a.spyjmc
+	FROM maw_request_audi_record a, mab_web_bill_type b
+	WHERE a.splx = b.djlx ";
+
+
+    tj=
+		AND b.syzt = '0'
+		AND a.syzt = '0'
+		AND a.jlzt = '2'
+		AND a.spczyxh = '1097'
+		AND a.sprq >= '2017-11-22'
+		AND a.sprq <= '2018-01-25 23：59：59'
+		AND a.splx = 86
+	GROUP BY a.zdxh, a.splx, b.djmc, a.djh, a.sprq, a.spyjmc
+) a
+
+string sql3="
+	LEFT JOIN maw_school_reimbursed_bill d ON a.zdxh = d.serial_no
+	LEFT JOIN maw_school_reimbursed_detail c ON a.zdxh = c.zdxh ";
+" WHERE d.syzt = '0'
+	AND c.syzt = '0'
+ORDER BY a.djh DESC " 

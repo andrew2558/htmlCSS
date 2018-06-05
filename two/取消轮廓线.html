@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>取消轮廓线</title>
+    <style>
+        input {
+            width:220px;
+            height:30px;
+            margin:20px;
+            display: block;
+        }
+        input:nth-child(2) {
+            outline:0;
+        }
+        input:nth-child(3) {
+            outline:5px solid seagreen;
+        }
+    </style>
+</head>
+<body>
+    <h2>仔细观察三个输入框的轮廓不同之处</h2>
+    <input type="text" >
+
+    <input type="text" >
+
+    <input type="text" >
+</body>
+</html>

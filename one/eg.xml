@@ -1,0 +1,111 @@
+<Control ID="uc1">
+<ClassName>RuiZhi.Malms.Work.ComReport.BLL.ucDropDownList</ClassName>
+<ControlBigType>Template</ControlBigType>
+<ControlSmallType>SelectZB</ControlSmallType>
+<Title>帐簿</Title>
+<Width> </Width>
+<Height> </Height>
+<IsDouble> </IsDouble>
+<DoubleMode> </DoubleMode>
+<GroupName> </GroupName
+><ProcPram>zbdm</ProcPram>
+<ControlMode> </ControlMode>
+<MaxLength> </MaxLength>
+<DefaultValue> </DefaultValue>
+<ValueRange> </ValueRange>
+<CustomValue> </CustomValue>
+<RelateControlID> </RelateControlID>
+<TextSql> </TextSql>
+<ValueSql> </ValueSql>
+<ValueType> </ValueType>
+<Temp1> </Temp1>
+<Temp2> </Temp2>
+<Temp3> </Temp3>
+<Temp4> </Temp4>
+<Temp5> </Temp5>
+<CheckZb> </CheckZb>
+</Control>
+
+<Control ID="uc2">
+<ClassName>RuiZhi.Malms.Work.ComReport.BLL.ucAccountDate1</ClassName>
+<ControlBigType>Template</ControlBigType>
+<ControlSmallType>AcountDateRange1</ControlSmallType>
+<Title>会计期</Title>
+<Width></Width>
+<Height></Height>
+<IsDouble></IsDouble>
+<DoubleMode></DoubleMode>
+<GroupName></GroupName>
+<ProcPram>kjq</ProcPram>
+<ControlMode>1</ControlMode>
+<MaxLength> </MaxLength>
+<DefaultValue> </DefaultValue>
+<ValueRange> </ValueRange>
+<CustomValue> </CustomValue>
+<RelateControlID> </RelateControlID>
+<TextSql> </TextSql>
+<ValueSql> </ValueSql>
+<ValueType> </ValueType>
+<Temp1> </Temp1>
+<Temp2> </Temp2>
+<Temp3> </Temp3>
+<Temp4> </Temp4>
+<Temp5> </Temp5>
+<CheckZb> </CheckZb>
+</Control>
+
+
+<Control ID="uc3">
+<ClassName>RuiZhi.Malms.Work.ComReport.BLL.ucDropDownList</ClassName>
+<ControlBigType>Customize</ControlBigType>
+<ControlSmallType> </ControlSmallType>
+<Title>数据检验标志</Title>
+<Width>123</Width>
+<Height>222</Height>
+<IsDouble> </IsDouble>
+<DoubleMode> </DoubleMode>
+<GroupName> </GroupName>
+<ProcPram>sjjybz</ProcPram>
+<ControlMode> </ControlMode>
+<MaxLength> </MaxLength>
+<DefaultValue> </DefaultValue>
+<ValueRange> </ValueRange>
+<CustomValue>不通过,0|通过,1</CustomValue>
+<RelateControlID> </RelateControlID>
+<TextSql> </TextSql>
+<ValueSql> /ValueSql>
+<ValueType> </ValueType>
+<Temp1>1</Temp1>
+<Temp2>2</Temp2>
+<Temp3>3</Temp3>
+<Temp4>4</Temp4>
+<Temp5>5</Temp5>
+<CheckZb></CheckZb>
+</Control>
+
+
+
+<ROOT>
+<serial_no>
+<ChinaName>"序号"</ChinaName>
+<Display>0</Display>
+<DisplayName>"序号"</DisplayName>
+<Width>80</Width>
+<DispNum>0</DispNum>
+</serial_no>
+<zdxh><ChinaName>"帐单序号"</ChinaName><Display>0</Display><DisplayName>"帐单序号"</DisplayName><Width>80</Width><DispNum>1</DispNum></zdxh><zjlyxh><ChinaName>"资金来源序号"</ChinaName><Display>0</Display><DisplayName>"资金来源序号"</DisplayName><Width>80</Width><DispNum>2</DispNum></zjlyxh><zjlymc><ChinaName>"资金来源名称"</ChinaName><Display>0</Display><DisplayName>"资金来源名称"</DisplayName><Width>80</Width><DispNum>3</DispNum></zjlymc><zcxh><ChinaName>"资产序号"</ChinaName><Display>0</Display><DisplayName>"资产序号"</DisplayName><Width>80</Width><DispNum>4</DispNum></zcxh><zcdm><ChinaName>"资产代码"</ChinaName><Display>0</Display><DisplayName>"资产代码"</DisplayName><Width>80</Width><DispNum>5</DispNum></zcdm><zcmc><ChinaName>"资产名称"</ChinaName><Display>0</Display><DisplayName>"资产名称"</DisplayName><Width>80</Width><DispNum>6</DispNum></zcmc><sqzcmc><ChinaName>"申请资产名称"</ChinaName><Display>0</Display><DisplayName>"申请资产名称"</DisplayName><Width>80</Width><DispNum>7</DispNum></sqzcmc><ggxh><ChinaName>"规格型号"</ChinaName><Display>0</Display><DisplayName>"规格型号"</DisplayName><Width>80</Width><DispNum>8</DispNum></ggxh><unit><ChinaName>"单位"</ChinaName><Display>0</Display><DisplayName>"单位"</DisplayName><Width>80</Width><DispNum>9</DispNum></unit><kfdm><ChinaName>"库房代码"</ChinaName><Display>0</Display><DisplayName>"库房代码"</DisplayName><Width>80</Width><DispNum>10</DispNum></kfdm><kfmc><ChinaName>"库房名称"</ChinaName><Display>0</Display><DisplayName>"库房名称"</DisplayName><Width>80</Width><DispNum>11</DispNum></kfmc><zbdm><ChinaName>"帐簿代码"</ChinaName><Display>0</Display><DisplayName>"帐簿代码"</DisplayName><Width>80</Width><DispNum>12</DispNum></zbdm><sqbmxh><ChinaName>"申请部门序号"</ChinaName><Display>0</Display><DisplayName>"申请部门序号"</DisplayName><Width>80</Width><DispNum>13</DispNum></sqbmxh><sqbmdm><ChinaName>"申请部门代码"</ChinaName><Display>0</Display><DisplayName>"申请部门代码"</DisplayName><Width>80</Width><DispNum>14</DispNum></sqbmdm><sqbmmc><ChinaName>"申请部门名称"</ChinaName><Display>0</Display><DisplayName>"申请部门名称"</DisplayName><Width>80</Width><DispNum>15</DispNum></sqbmmc><sccjxh><ChinaName>"生产厂家序号"</ChinaName><Display>0</Display><DisplayName>"生产厂家序号"</DisplayName><Width>80</Width><DispNum>16</DispNum></sccjxh><sccjdm><ChinaName>"生产厂家代码"</ChinaName><Display>0</Display><DisplayName>"生产厂家代码"</DisplayName><Width>80</Width><DispNum>17</DispNum></sccjdm><sccjmc><ChinaName>"生产厂家名称"</ChinaName><Display>0</Display><DisplayName>"生产厂家名称"</DisplayName><Width>80</Width><DispNum>18</DispNum></sccjmc><sqsccjmc><ChinaName>"申请生产厂家名称"</ChinaName><Display>0</Display><DisplayName>"申请生产厂家名称"</DisplayName><Width>80</Width><DispNum>19</DispNum></sqsccjmc><dlcsxh><ChinaName>"代理厂商序号"</ChinaName><Display>0</Display><DisplayName>"代理厂商序号"</DisplayName><Width>80</Width><DispNum>20</DispNum></dlcsxh><dlcsdm><ChinaName>"代理厂商代码"</ChinaName><Display>0</Display><DisplayName>"代理厂商代码"</DisplayName><Width>80</Width><DispNum>21</DispNum></dlcsdm><dlcsmc><ChinaName>"代理厂商名称"</ChinaName><Display>0</Display><DisplayName>"代理厂商名称"</DisplayName><Width>80</Width><DispNum>22</DispNum></dlcsmc><sqdlcsmc><ChinaName>"申请代理厂商名称"</ChinaName><Display>0</Display><DisplayName>"申请代理厂商名称"</DisplayName><Width>80</Width><DispNum>23</DispNum></sqdlcsmc><ghdwxh><ChinaName>"供货单位序号"</ChinaName><Display>0</Display><DisplayName>"供货单位序号"</DisplayName><Width>80</Width><DispNum>24</DispNum></ghdwxh><ghdwdm><ChinaName>"供货单位代码"</ChinaName><Display>0</Display><DisplayName>"供货单位代码"</DisplayName><Width>80</Width><DispNum>25</DispNum></ghdwdm><ghdwmc><ChinaName>"供货单位名称"</ChinaName><Display>0</Display><DisplayName>"供货单位名称"</DisplayName><Width>80</Width><DispNum>26</DispNum></ghdwmc><jhdj><ChinaName>"计划单价"</ChinaName><Display>0</Display><DisplayName>"计划单价"</DisplayName><Width>80</Width><DispNum>27</DispNum></jhdj>
+<jhsl>
+<ChinaName>"计划数量"
+</ChinaName>
+<Display>0</Display>
+<DisplayName>"计划数量"
+</DisplayName>
+<Width>80</Width>
+<DispNum>28</DispNum>
+</jhsl>
+</ROOT>
+
+
+
+
+"serial_no","序号"|"zdxh","帐单序号"|"zjlyxh","资金来源序号"|"zjlymc","资金来源名称"|"zcxh","资产序号"|"zcdm","资产代码"|"zcmc","资产名称"|"sqzcmc","申请资产名称"|"ggxh","规格型号"|"unit","单位"|"kfdm","库房代码"|"kfmc","库房名称"|"zbdm","帐簿代码"|"sqbmxh","申请部门序号"|"sqbmdm","申请部门代码"|"sqbmmc","申请部门名称"|"sccjxh","生产厂家序号"|"sccjdm","生产厂家代码"|"sccjmc","生产厂家名称"|"sqsccjmc","申请生产厂家名称"|"dlcsxh","代理厂商序号"|"dlcsdm","代理厂商代码"|"dlcsmc","代理厂商名称"|"sqdlcsmc","申请代理厂商名称"|"ghdwxh","供货单位序号"|"ghdwdm","供货单位代码"|"ghdwmc","供货单位名称"|"jhdj","计划单价"|"jhsl","计划数量"  

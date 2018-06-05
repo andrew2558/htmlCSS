@@ -1,0 +1,69 @@
+
+<---父表数据来源---->
+SELECT a.*
+FROM maw_self_stock_request_bill a, com_dept b
+WHERE a.sqbmxh = b.serial_no
+	AND b.syzt = 0
+	AND a.syzt = 0
+	AND (1 = 1
+		OR a.serial_no IN (SELECT zdxh
+			FROM maw_request_audi_record
+			WHERE jlzt IN (1, 2, 4)
+				AND syzt = 0
+				AND splx = 84
+				AND spczyxh = 1140))
+	AND (charindex(',1140,', ',' + fzrxh + ',') > 0
+		OR lrczyxh = 1140)
+	AND a.lrrq >= '2018-01-04 00：00：00'
+
+
+
+<--子表数据来自：-->
+bll_detail.GetList("select * from maw_self_stock_request_detail where syzt=0 and zdxh=" + zdxh + " order by zcmc");
+
+
+<---查询子条件--->
+
+子表zdxh==父表serial serial_no
+
+
+GetAssetEntrustList(
+	ddl_store.SelectedValue, 
+	ddl_status.SelectedValue, 
+	Session("sqbmxh"), 
+	Session("czyxh"), 
+	txt_bill.Text, 
+	txtStart.Value, 
+	txtEnd_Value, 
+	txt_zdr.Text, 
+	Request.QueryString("serialnojh")
+	)
+
+
+
+	GetSchoolReimbursedRequestList(
+		String status, 
+		Int32 sqbmxh, 
+		Int32 czyxh, 
+		String bill, 
+		String start, 
+		String end, 
+		String fph, 
+		String zdr, 
+		String serialnojh
+		)
+
+
+
+
+
+		//
+
+INSERT INTO com_system_menu
+	(id, name, py, wb, dllname
+	, classname, methodname, menuclass, menu_up, systype
+	, sxbh, mjbz)
+VALUES
+('040113', 'gxzckpxx', 'guuuhtwt', 'RuiZhi.Malms.Work.AssetCard',
+ '','', '1', '040100', '0', 
+ '0', '1')

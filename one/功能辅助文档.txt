@@ -1,0 +1,55 @@
+需求功能：
+1、更新资产卡片信息（多条扫码记录让管理员选择用哪条记录）
+2、盘点功能（开始与结束时间段内让各部门扫码，扫码后资产列表对应项就改变状态为，结束盘点后导出已扫码资产）
+
+
+
+WX_ASSET_CARD_Confirm                   用户扫描表的kpbh字段对应卡片信息表的kpbh字段（唯一）
+select * from maw_Asset_card            卡片信息表的zcxh字段对应资产基础字典的SERIAL_NO字段
+select * from mab_asset                 资产基础字典
+
+
+
+功能一：更新资产卡片信息功能逻辑实现
+    1、用户在手机在扫描资产卡片信息，确认后，记入表WX_ASSET_CARD_Confirm 
+    2、同一资产多个用户扫描则记录多条记录
+    管理员界面：
+        1、起始界面加载全部用户扫描的记录信息（一个资产只显示一条记录）
+        2、有过滤功能，根据：部门、卡片编号、购入日期、设置名称、资产类别进行过滤记录
+        3、用户双击某条资产记录时，则弹出该资产被部门员工扫描的记录（多条或一条），让用户选择用哪一条）
+            （取记录状态为启用或状态为空的记录）
+        4、选择后更新数据库表 maw_Asset_card 的字段(azdd,syrxm)，
+            这两个字段来源于表WX_ASSET_CARD_Confirm的（az_azdd,syrxm）字段
+        5、并将WX_ASSET_CARD_Confirm表中的记录状态更新
+            用户选中的那条记录状态更新为启用
+            没有选中的记录状态更新为放弃
+        6、确认后的资产再也不显示在列表中
+        7、select * from #T a where ID=(select max(ID) from #T where Name=a.Name) order by ID
+        8、select * from maw_asset_card  where kpbh in (select kpbh  from WX_ASSET_CARD_Confirm  group by kpbh) 
+
+
+    问题：
+        1、扫描记录表里的记录随着时间会有很多记录，这个表的信息是如何删除的？
+        2、WX_ASSET_CARD_Confirm表中需要增加一条记录状态的字段，用于记录记录的状态（0-启用，1-放弃，其它-新增）
+
+
+功能二：盘点：
+    1、管理在员界面点击开始盘点按钮，还有一个结束按钮，并通知各部门扫描资产条码
+    2、加载所有资产信息记录（来源于表：maw_Asset_card），
+        加载每条记录的时个查询WX_ASSET_CARD_Confirm表中，对应记录的状态
+        如果表中在起始时间与结束时间之间的资产有记录（状态不能为--1-放弃）的记录
+        则
+    3、当在
+
+    问题：
+    1、为什么不让用户扫描后自动更新资产状态？
+    2、如何查看以往的盘点状况
+    3、记录起始时间与结束时间的存放在哪？
+
+
+
+
+操作：
+1、暂时给WX_ASSET_CARD_Confirm表添加一个states的字段，记录记录的状态（0-新增的扫描  1-上次采用的信息 2-上次此资产采用后无用的记录）
+WX_ASSET_CARD_Confirm
+alter table WX_ASSET_CARD_Confirm add states char(2) null;

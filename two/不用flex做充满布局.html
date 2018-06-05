@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用calc计算来布局</title>
+    <style>
+    * {
+        margin:0;
+        padding:0;
+    }
+    html,
+    body {
+        width:100%;
+        height:100%;
+    }
+    .all {
+        width:100%;
+        height:100%;
+        background-color:cyan;
+        width:100%;
+        margin:0 auto;
+        position:relative;
+
+    }
+    .top {
+        height:50px;
+        background-color:brown;
+        width:100%
+    }
+    .bottom {
+        height:100px;
+        background-color:blueviolet;
+        position:absolute;
+        bottom:0;
+        left:0;
+        width:100%;
+    }
+    .middle {
+        background-color:cadetblue;
+        width:100%;
+        height:calc(calc(100% - 100px) - 50px);
+    }
+    .midd-l,
+    .midd-r,
+    .midd-c {
+        height:100%;
+        float:left;
+
+    }
+    .midd-l{
+        width:120px;
+        background-color:chartreuse;
+        /* position:absolute;
+        top:0;
+        left:0; */
+
+    }
+    .midd-r {
+        width:200px;
+        background-color:rgb(250, 15, 113);
+        /* position:absolute;
+        top:0;
+        right: 0; */
+
+    }
+    .midd-c {
+        /* position:absolute; */
+        /* top:0;
+        left:120px; */
+        width:calc(calc(100% - 200px) - 120px);
+        background-color:darkkhaki;
+    }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="top">ttttt</div>
+        <div class="middle">
+            <div class="midd-l">lllll</div>
+            <div class="midd-c">ccc</div>
+            <div class="midd-r">mmmmm</div>
+        </div>
+        <div class="bottom">bbbb</div>
+    </div>
+    
+</body>
+</html>

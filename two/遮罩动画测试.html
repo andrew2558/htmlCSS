@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 网站图标 -->
+    <link rel="shortcut icon" href="bitbug_favicon.ico" type="image/x-icon" />
+    <!-- 搜索关键字 -->
+    <mate name="keywords" content="" />
+    <!-- 网站说明内容 -->
+    <mate name="description" content="" />
+    <title>遮罩动画测试</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        nav {
+            height: 50px;
+            width: 100%;
+            background-color: rgb(87, 87, 87);
+        }
+
+        .navul {
+            height: 100%;
+            width: 800px;
+            margin: 0 auto;
+            background-color: pink;
+        }
+
+        .nvali {
+            float: left;
+            position: relative;
+        }
+
+        .navtext {
+            display: block;
+            height: 50px;
+            line-height: 50px;
+            text-decoration: none;
+            color: #FFF;
+            background-color: saddlebrown;
+            padding: 0 15px;
+        }
+        .nvali:hover #prodList {
+            height:400px;
+        }
+
+        .detail {
+            position: absolute;
+            background-color: rgb(78, 195, 241);
+            top: 50px;
+            left: 0;
+            width: 800px;
+            height: 0;
+            overflow: hidden;
+            transition:all 0.3s;
+        }
+
+        .dl,
+        .dr {
+            float: left;
+        }
+
+        .dr {
+            height: 200px;
+            width: 500px;
+            background-color: bisque;
+        }
+
+        .dl-li {
+            width: 200px;
+            height: 30px;
+            padding: 5px 15px;
+            background-color: rgb(4, 54, 56);
+            border-left: 3px solid rgb(4, 54, 56);
+        }
+
+        .dl-li:hover {
+            background-color: aqua;
+            border-left: 3px solid rgb(13, 42, 209);
+        }
+.dr-l,
+.dr-r {
+    float:left;
+}
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul class="navul">
+            <li class="nvali">
+                <a href="#" class="navtext">首页</a>
+            </li>
+            <li class="nvali">
+                <a href="#" class="navtext">产品列表</a>
+                <div id="prodList" class="detail">
+                    <div class="dl">
+                        <ul>
+                            <li class="dl-li">
+                                <a href="#">Products</a>
+                            </li>
+                            <li class="dl-li">
+                                <a href="#">Analytics</a>
+                            </li>
+                            <li class="dl-li">
+                                <a href="#">Blockchain</a>
+                            </li>
+                            <li class="dl-li">
+                                <a href="#">Cloud</a>
+                            </li>
+                            <li class="dl-li">
+                                <a href="#">Collaboration Solutions</a>
+                            </li>
+                            <li class="dl-li">
+                                <a href="#">Industry solutions</a>
+                            </li>
+                            <li class="dl-li">
+                                <a href="#">Internet of Things</a>
+                            </li>
+                            <li class="dl-li">
+                                <a href="#">IT infrastructure</a>
+                            </li>
+                            <li class="dl-li">
+                                <a href="#">Mobile</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="dr">
+                        <div class="dr-t">
+                            <a>
+                                <h2>Products</h2>
+                            </a>
+                        </div>
+                        <div class="dr-b">
+                            <div class="dr-l">
+                                <dl>
+                                    <dt>Quicklinks</dt>
+                                    <dd><a href="#">Business Analytics</a></dd>
+                                    <dd><a href="#">Bare metal servers</a></dd>
+                                    <dd><a href="#">IBM IOT Continuous Engineering</a></dd>
+                                    <dd><a href="#">IBM MaaS360 with Watson</a></dd>
+                                    <dd><a href="#">IBM Maximo</a></dd>
+                                    <dd><a href="#">IBM SPSS Statistics</a></dd>
+                                </dl>
+                            </div>
+                            <div class="dr-r">
+                                <p></p>
+                                <a href="#"><img src="images/analytics_feature_panel.jpg    " alt=""></a>
+                                <a href="#"><p></p></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="nvali">
+                <a href="#" class="navtext">解决方案</a>
+            </li>
+            <li class="nvali">
+                <a href="#" class="navtext">帮助</a>
+            </li>
+        </ul>
+    </nav>
+</body>
+
+</html>

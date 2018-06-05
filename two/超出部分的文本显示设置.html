@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>超出部分的文本显示设置</title>
+    <style>
+        div {
+            width: 220px;
+            height: 50px;
+            margin: 10px auto;
+            background-color: aquamarine;
+        }
+
+        .one {
+            /*  设置超出部分的内容隐藏 */
+            overflow: hidden;
+            /* 设置文本在一行显示 */
+            white-space: nowrap;
+            /* 设置超出文本用省略号来显示 */
+            text-overflow: ellipsis;
+        }
+
+        .two {
+            word-break: keep-all;
+            overflow: hidden;
+            white-space: normal;
+            text-overflow: inherit;
+        }
+
+        .three {}
+    </style>
+</head>
+
+<body>
+    <div class="one">
+        作为京东最大牌的代言人，刘强东无时无刻不在为自己的企业宣传，而今天他再次当了一把快递员。 其实之前刘强东也当过京东的快递员，不过跟之前的相比，这次画面要美很多，首先是西装革履，
+    </div>
+    <div class="two">
+        作为京东最大牌的代言人，刘强东无时无刻不在为自己的企业宣传，而今天他再次当了一把快递员。 其实之前刘强东也当过京东的快递员，不过跟之前的相比，这次画面要美很多，首先是西装革履，
+    </div>
+    <div class="three">
+        作为京东最大牌的代言人，刘强东无时无刻不在为自己的企业宣传，而今天他再次当了一把快递员。 其实之前刘强东也当过京东的快递员，不过跟之前的相比，这次画面要美很多，首先是西装革履，
+    </div>
+
+</body>
+
+</html>
